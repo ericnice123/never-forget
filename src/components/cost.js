@@ -9,7 +9,7 @@ class Cost extends Component {
     }
 
     onPress() {
-        console.log("FUCK ME!!!");
+        console.log("Button Pressed!!!");
     }
 
     render() {
@@ -17,10 +17,6 @@ class Cost extends Component {
             <View>
                 <TextInput
                     style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                />
-                <Button
-                    onPress={this.onPress}
-                    title="Submit"
                 />
             </View>            
         );
