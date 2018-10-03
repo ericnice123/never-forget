@@ -1,24 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
 
 // Components
-import HomeScreen from './src/components/home_screen';
-import CostHistoryScreen from './src/components/cost_history_screen';
+import AppNavigator from './src/components/app_navigator';
 
-/*export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
-      <HomeScreen/>
+      <AppNavigator/>
     );
   }
 
-}*/
-
-const App = createStackNavigator({
-  HomeScreen: { screen: HomeScreen },
-  CostHistoryScreen: { screen: CostHistoryScreen }
-});
+}
 
 export default App
 
