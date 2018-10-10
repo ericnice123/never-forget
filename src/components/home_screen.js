@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
+import { connect } from 'react-redux';
 
 // Components
 import SpendingDetail from './spending_detail';
@@ -7,6 +8,10 @@ import DateSelector from './date_selector';
 import Cost from './cost';
 
 class HomeScreen extends Component {    
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <View style={style.grid}>                               
@@ -27,4 +32,8 @@ const style = StyleSheet.create({
     }
 })
 
-export default HomeScreen;
+function mapStateToProps( state ) {
+    return { cost: state.cost }
+}
+
+export default connect(mapStateToProps)(HomeScreen);
