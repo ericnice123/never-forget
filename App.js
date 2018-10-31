@@ -18,9 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={createStoreWithMiddleware(reducers)}>
-        <View>
           <AppNavigator/>
-        </View>
       </Provider>
     );
   }

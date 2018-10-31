@@ -64,7 +64,9 @@ class HomeScreen extends Component {
 })*/
 
 let styles = StyleSheet.create({
-    container: {flex: 1, backgroundColor: '#4286f4'},
+    container: { 
+        backgroundColor:'#4286f4'     
+    },
     viewStyleOne: {
         width:40,
         height:40,
