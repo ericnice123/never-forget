@@ -14,16 +14,11 @@ class SpendingDetail extends Component {
         const sliceColor = ['#F44336','#2196F3','#FFEB3B', '#4CAF50', '#FF9800']
 
         return(
-            <View style={style.rowGrid}>                
-                <PieChart
-                    chart_wh={chart_wh}
-                    series={series}
-                    sliceColor={sliceColor}
-                />
-                <View>
-                    <SpendingCategories numOfItems={series.length}/>
-                </View>                
-            </View>                                
+            <PieChart
+                chart_wh={chart_wh}
+                series={series}
+                sliceColor={sliceColor}
+            />
         );        
     }
 }

@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider, connect } from 'react-redux';
+import { StackNavigator, TabNavigator } from 'react-navigation';
+import axios from 'axios';
+import axiosMiddleware from 'redux-axios-middleware';
+
+import reducers from './src/reducers';
 
 // Components
 import AppNavigator from './src/components/app_navigator';
 
+
+const createStoreWithMiddleware = applyMiddleware()(createStore);
+
 class App extends React.Component {
   render() {
     return (
-      <AppNavigator/>
+      <Provider store={createStoreWithMiddleware(reducers)}>
+        <View>
+          <AppNavigator/>
+        </View>
+      </Provider>
     );
   }
-
 }
 
 export default App

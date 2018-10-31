@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 
-class CostHistoryScreen extends Component
+class CostScreen extends Component
 {
     render () {
         return (
@@ -12,4 +12,4 @@ class CostHistoryScreen extends Component
     }
 }
 
-export default CostHistoryScreen;
+export default CostScreen;
