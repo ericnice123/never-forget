@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Dimensions, AppRegistry } from 'react-native';
+import { View, Text, StyleSheet, Button, Dimensions, AppRegistry, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
+import PieChart from 'react-native-pie-chart';
 
 // Components
 import SpendingDetail from './spending_detail';
@@ -13,83 +14,103 @@ class HomeScreen extends Component {
     }
 
     onPress() {
-        Console.log("Pressed!");
+        console.log("Pressed!");
+    }
+
+    onPressLearnMore() {
+        console.log("yolo");
     }
 
     render() {
         const screenWidth = Dimensions.get('window').width;
         const screenHeight = Dimensions.get('window').height;
+        const chart_wh = screenWidth / 2;
+        const series = [123, 321, 123, 789, 537]
+        const sliceColor = ['#F44336','#2196F3','#FFEB3B', '#4CAF50', '#FF9800']
+
         return (
             <View style={styles.container}>
                 <View style={styles.viewStyleOne}>
-                    <Text style={styles.textStyle}> 1 </Text>
+                    <View style={styles.viewPieChart}>
+                        <Text>pieChart</Text>
+                        <PieChart
+                            chart_wh={chart_wh}
+                            series={series}
+                            sliceColor={sliceColor}
+                        />
+                    </View>
+                    <View style={styles.viewScrollCost}>
+                        <ScrollView>
+                            <Text style={styles.textStyle}> costScrollView </Text>
+                            <Text style={styles.textStyle}> costScrollView </Text>
+                            <Text style={styles.textStyle}> costScrollView </Text>
+                            <Text style={styles.textStyle}> costScrollView </Text>
+                            <Text style={styles.textStyle}> costScrollView </Text>
+                            <Text style={styles.textStyle}> costScrollView </Text>
+                            <Text style={styles.textStyle}> costScrollView </Text>
+                            <Text style={styles.textStyle}> costScrollView </Text>
+                        </ScrollView>
+                    </View>
                 </View>
                 <View style={styles.viewStyleTwo}>
-                    <Text style={styles.textStyle}> 2 </Text>
-                </View>
-                <View style={styles.viewStyleThree}>
-                    <Text style={styles.textStyle}> 3 </Text>
+                    <Button 
+                        onPress={this.onPressLearnMore}
+                        title="View Monthly Summary"
+                        color="#841584"
+                        accessibilityLabel="Learn more about this purple button"
+                    />
+                    <Button 
+                        onPress={this.onPressLearnMore}
+                        title="Add New Month Component"
+                        color="#841584"
+                        accessibilityLabel="Learn more about this purple button"
+                    />
+                    <Button 
+                        onPress={this.onPressLearnMore}
+                        title="Add a Cost"
+                        color="#841584"
+                        accessibilityLabel="Learn more about this purple button"
+                    />
+                    <Button 
+                        onPress={this.onPressLearnMore}
+                        title="Remove a Cost"
+                        color="#841584"
+                        accessibilityLabel="Learn more about this purple button"
+                    />
                 </View>
             </View>
         );
     }    
 }
 
-/*const style = StyleSheet.create({
-    container:
-    {
-        flex: 1,
-        flexDirection: 'column'
-        //justifyContent: 'center'
-    },
-    boxContainer:
-    {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    redBox:
-    {
-        flex: 2,
-        backgroundColor: 'red'
-    },
-    blueBox:
-    {
-        backgroundColor: 'blue'
-    },
-    greenBox:
-    {
-        backgroundColor: 'green'
-    }
-})*/
-
 let styles = StyleSheet.create({
     container: { 
-        backgroundColor:'#4286f4'     
+        flex: 3,
+        flexDirection: 'column',
+        backgroundColor: '#4286f4'     
     },
     viewStyleOne: {
-        width:40,
-        height:40,
-        justifyContent: 'center',
-        alignItems:'center', 
+        flex: 1,
+        flexDirection: 'row',
         backgroundColor:'red'
     },
     viewStyleTwo: {
-        width:40,
-        height:40,
-        justifyContent: 'center',
-        alignItems:'center', 
-        backgroundColor:'blue'
+        flex: 2,
+        backgroundColor: 'white'
     },
-    viewStyleThree: {
-        width:40,
-        height:40,
+    viewPieChart: {
+        flex: 1,
+        backgroundColor: 'green',
         justifyContent: 'center',
-        alignItems:'center', 
-        backgroundColor:'green'
+        alignItems:'center'
+    },
+    viewScrollCost: {
+        flex: 1,
+        backgroundColor: 'yellow'
     },
     textStyle:{
-        textAlign:'center'
+        textAlign:'center',
+        fontSize: 50
     }
 })
 
