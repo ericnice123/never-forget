@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Dimensions, AppRegistry, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Button, Dimensions, AppRegistry, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import PieChart from 'react-native-pie-chart';
 
@@ -17,8 +17,20 @@ class HomeScreen extends Component {
         console.log("Pressed!");
     }
 
-    onPressLearnMore() {
-        console.log("yolo");
+    onPressViewMonthlySummary() {
+        console.log("MontlySummary buttom pressed!");
+    }
+
+    onPressNewComponent() {
+        console.log("Add new monthly component pressed!");
+    }
+
+    onPressAddCost() {
+        console.log("Add a cost pressed!");
+    }
+
+    onPressRemoveCost() {
+        console.log("Remove cost pressed!");
     }
 
     render() {
@@ -53,30 +65,30 @@ class HomeScreen extends Component {
                     </View>
                 </View>
                 <View style={styles.viewStyleTwo}>
-                    <Button 
-                        onPress={this.onPressLearnMore}
-                        title="View Monthly Summary"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
-                    <Button 
-                        onPress={this.onPressLearnMore}
-                        title="Add New Month Component"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
-                    <Button 
-                        onPress={this.onPressLearnMore}
-                        title="Add a Cost"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
-                    <Button 
-                        onPress={this.onPressLearnMore}
-                        title="Remove a Cost"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
+                    <TouchableOpacity
+                        style={styles.buttonStyle}
+                        onPress={this.onPressViewMonthlySummary}
+                    >
+                        <Text>View Montly Summary</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.buttonStyle}
+                        onPress={this.onPressNewComponent}
+                    >
+                        <Text>Add New Month Component</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.buttonStyle}
+                        onPress={this.onPressAddCost}
+                    >
+                        <Text>Add a Cost</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.buttonStyle}
+                        onPress={this.onPressRemoveCost}
+                    >
+                        <Text>Remove a Cost</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
@@ -96,7 +108,9 @@ let styles = StyleSheet.create({
     },
     viewStyleTwo: {
         flex: 2,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems:'center'
     },
     viewPieChart: {
         flex: 1,
@@ -107,6 +121,14 @@ let styles = StyleSheet.create({
     viewScrollCost: {
         flex: 1,
         backgroundColor: 'yellow'
+    },
+    buttonStyle: {
+        alignItems: 'center',
+        backgroundColor: '#DDDDDD',
+        padding: 10
+    },
+    buttonContainer: {
+        flex: 1
     },
     textStyle:{
         textAlign:'center',
