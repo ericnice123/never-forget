@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
 // reducers
-import CostReducer from './reducer_cost';
+import CostsReducer from './reducer_cost';
 
 const rootReducer = combineReducers({
-  cost: CostReducer
+  costs: CostsReducer
 });
 
 export default rootReducer;

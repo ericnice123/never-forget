@@ -1,8 +1,8 @@
-export const COST = "COST";
+export const COSTS = "COSTS";
 
-export function getBalance ( balance ) {
+export function getCosts ( costs ) {
     return {
-        type: COST,
-        payload: balance
+        type: COSTS,
+        payload: costs
     };
 }

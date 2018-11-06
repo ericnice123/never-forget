@@ -8,7 +8,10 @@ import MonthlySummaryScreen from './monthly_summary_screen';
 
 const AppNavigator = createStackNavigator(
     {
-        HomeScreen: HomeScreen
+        HomeScreen: {screen: HomeScreen},
+        CostScreen: {screen: CostScreen},
+        NewComponentScreen: {screen: NewComponentScreen},
+        MonthlySummaryScreen: {screen: MonthlySummaryScreen}
     },
     {
         initialRouteName: 'HomeScreen',

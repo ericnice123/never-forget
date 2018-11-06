@@ -1,5 +1,5 @@
 export default function() {
     return [
-        {"currentBalance": 0}
+        123, 321, 123, 789, 537
     ]
 }

@@ -37,7 +37,7 @@ class HomeScreen extends Component {
         const screenWidth = Dimensions.get('window').width;
         const screenHeight = Dimensions.get('window').height;
         const chart_wh = screenWidth / 2;
-        const series = [123, 321, 123, 789, 537]
+        const series = this.props.costs;
         const sliceColor = ['#F44336','#2196F3','#FFEB3B', '#4CAF50', '#FF9800']
 
         return (
@@ -69,25 +69,25 @@ class HomeScreen extends Component {
                         style={styles.buttonStyle}
                         onPress={this.onPressViewMonthlySummary}
                     >
-                        <Text>View Montly Summary</Text>
+                        <Text style={styles.textStyle}>View Montly Summary</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.buttonStyle}
                         onPress={this.onPressNewComponent}
                     >
-                        <Text>Add New Month Component</Text>
+                        <Text style={styles.textStyle}>Add New Month Component</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.buttonStyle}
                         onPress={this.onPressAddCost}
                     >
-                        <Text>Add a Cost</Text>
+                        <Text style={styles.textStyle}>Add a Cost</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.buttonStyle}
                         onPress={this.onPressRemoveCost}
                     >
-                        <Text>Remove a Cost</Text>
+                        <Text style={styles.textStyle}>Remove a Cost</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -109,8 +109,9 @@ let styles = StyleSheet.create({
     viewStyleTwo: {
         flex: 2,
         backgroundColor: 'white',
-        justifyContent: 'center',
-        alignItems:'center'
+        justifyContent: 'space-around',
+        //alignItems:'center',
+        paddingHorizontal: Dimensions.get('window').width / 20
     },
     viewPieChart: {
         flex: 1,
@@ -125,19 +126,25 @@ let styles = StyleSheet.create({
     buttonStyle: {
         alignItems: 'center',
         backgroundColor: '#DDDDDD',
-        padding: 10
+        padding: Dimensions.get('window').height / 20
     },
     buttonContainer: {
         flex: 1
     },
     textStyle:{
         textAlign:'center',
-        fontSize: 50
+        fontSize: 20
     }
 })
 
 function mapStateToProps( state ) {
-    return { cost: state.cost }
+    return { costs: state.costs }
 }
 
-export default connect(mapStateToProps)(HomeScreen);
+// Anything return from this action will end up as props on Booklist container
+function mapDispatchToProps ( dispatch ) {
+    // Whenever selectBook is called, the resule should passed to all reducers
+    return bindActionCreators( { selectBook: selectBook }, dispatch );
+}
+
+export default connect(mapStateToProps, null)(HomeScreen);
