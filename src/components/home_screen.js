@@ -7,10 +7,13 @@ import PieChart from 'react-native-pie-chart';
 import SpendingDetail from './spending_detail';
 import DateSelector from './date_selector';
 import Cost from './cost';
+import Costs from '../containers/costs';
 
 class HomeScreen extends Component {    
     constructor(props) {
         super(props);
+
+        this.onPressViewMonthlySummary = this.onPressViewMonthlySummary.bind(this);
     }
 
     onPress() {
@@ -18,6 +21,7 @@ class HomeScreen extends Component {
     }
 
     onPressViewMonthlySummary() {
+        this.props.navigation.navigate('MonthlySummaryScreen');
         console.log("MontlySummary buttom pressed!");
     }
 
@@ -53,14 +57,7 @@ class HomeScreen extends Component {
                     </View>
                     <View style={styles.viewScrollCost}>
                         <ScrollView>
-                            <Text style={styles.textStyle}> costScrollView </Text>
-                            <Text style={styles.textStyle}> costScrollView </Text>
-                            <Text style={styles.textStyle}> costScrollView </Text>
-                            <Text style={styles.textStyle}> costScrollView </Text>
-                            <Text style={styles.textStyle}> costScrollView </Text>
-                            <Text style={styles.textStyle}> costScrollView </Text>
-                            <Text style={styles.textStyle}> costScrollView </Text>
-                            <Text style={styles.textStyle}> costScrollView </Text>
+                            <Costs/>
                         </ScrollView>
                     </View>
                 </View>
@@ -144,7 +141,7 @@ function mapStateToProps( state ) {
 // Anything return from this action will end up as props on Booklist container
 function mapDispatchToProps ( dispatch ) {
     // Whenever selectBook is called, the resule should passed to all reducers
-    return bindActionCreators( { selectBook: selectBook }, dispatch );
+    return bindActionCreators( { getCosts: getCosts }, dispatch );
 }
 
 export default connect(mapStateToProps, null)(HomeScreen);
