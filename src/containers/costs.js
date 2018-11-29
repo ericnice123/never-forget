@@ -10,14 +10,38 @@ class Costs extends Component {
     render() {
         return(
             this.props.costs.map( element => {
-                return <Text key={element}>{element}</Text>    
+                return(
+                    <View key={element} style={styles.container}>
+                        <View style={styles.box1}>
+                        </View>
+                        <View style={styles.box2}>
+                            <Text>{element}</Text>
+                        </View>
+                    </View>
+                    );
             })
         );
     }
 }
 
+let styles = StyleSheet.create({
+    container: { 
+        flex: 2,
+        flexDirection: 'row'
+    },
+    box1: {
+        flex: 1,
+        backgroundColor: 'red'
+    },
+    box2: {
+        flex: 1,
+        backgroundColor: 'blue'
+    }
+});
+
 function mapStateToProps( state ) {
     return { costs: state.costs }
 }
+
 
 export default connect(mapStateToProps, null)(Costs);
