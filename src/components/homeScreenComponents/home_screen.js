@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, Dimensions, AppRegistry, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import PieChart from 'react-native-pie-chart';
 
 // Components
-import SpendingDetail from '../spending_detail';
-import DateSelector from '../date_selector';
-import Cost from '../cost';
 import Costs from '../../containers/homeScreenContainers/costs';
 import PieChartCost from '../../containers/homeScreenContainers/pie_chart_summary';
 
@@ -14,7 +10,8 @@ class HomeScreen extends Component {
     constructor(props) {
         super(props);
 
-        this.onPressViewMonthlySummary = this.onPressViewMonthlySummary.bind(this);
+        this.onPressViewMonthlySummary  = this.onPressViewMonthlySummary.bind(this);
+        this.onPressNewComponent        = this.onPressNewComponent.bind(this);
     }
 
     onPress() {
@@ -23,11 +20,10 @@ class HomeScreen extends Component {
 
     onPressViewMonthlySummary() {
         this.props.navigation.navigate('MonthlySummaryScreen');
-        console.log("MontlySummary buttom pressed!");
     }
 
     onPressNewComponent() {
-        console.log("Add new monthly component pressed!");
+        this.props.navigation.navigate('NewComponentScreen');
     }
 
     onPressAddCost() {
@@ -111,9 +107,7 @@ let styles = StyleSheet.create({
     },
     viewScrollCost: {
         flex: 1,
-        backgroundColor: 'white',
-        //flexDirection: 'column',
-        //justifyContent: 'space-between'
+        backgroundColor: 'white'
     },
     buttonStyle: {
         alignItems: 'center',
