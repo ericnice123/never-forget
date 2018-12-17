@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import PieChart from 'react-native-pie-chart';
 
 // Components
-import SpendingDetail from './spending_detail';
-import DateSelector from './date_selector';
-import Cost from './cost';
-import Costs from '../containers/costs';
+import SpendingDetail from '../spending_detail';
+import DateSelector from '../date_selector';
+import Cost from '../cost';
+import Costs from '../../containers/homeScreenContainers/costs';
+import PieChartCost from '../../containers/homeScreenContainers/pie_chart_summary';
 
 class HomeScreen extends Component {    
     constructor(props) {
@@ -38,28 +39,20 @@ class HomeScreen extends Component {
     }
 
     render() {
-        const screenWidth = Dimensions.get('window').width;
-        const screenHeight = Dimensions.get('window').height;
-        const chart_wh = screenWidth / 2;
-        const series = this.props.costs;
-        const sliceColor = ['#F44336','#2196F3','#FFEB3B', '#4CAF50', '#FF9800']
+        const costScreenWidth = Dimensions.get('window').width;
+        const costScreenHeight = Dimensions.get('window').height;
 
         return (
             <View style={styles.container}>
                 <View style={styles.viewStyleOne}>
                     <View style={styles.viewPieChart}>
-                        <Text>pieChart</Text>
-                        <PieChart
-                            chart_wh={chart_wh}
-                            series={series}
-                            sliceColor={sliceColor}
-                        />
+                        <PieChartCost/>
                     </View>
                     <View style={styles.viewScrollCost}>
                         <ScrollView>
-                            <Costs/>
+                            <Costs screenWidth={costScreenWidth} screenHeight={costScreenHeight} />
                         </ScrollView>
-                    </View>
+                    </View>                   
                 </View>
                 <View style={styles.viewStyleTwo}>
                     <TouchableOpacity
@@ -118,7 +111,9 @@ let styles = StyleSheet.create({
     },
     viewScrollCost: {
         flex: 1,
-        backgroundColor: 'yellow'
+        backgroundColor: 'white',
+        //flexDirection: 'column',
+        //justifyContent: 'space-between'
     },
     buttonStyle: {
         alignItems: 'center',
@@ -138,9 +133,9 @@ function mapStateToProps( state ) {
     return { costs: state.costs }
 }
 
-// Anything return from this action will end up as props on Booklist container
+// Anything return from this action will end up as props on home_Screen container
 function mapDispatchToProps ( dispatch ) {
-    // Whenever selectBook is called, the resule should passed to all reducers
+    // Whenever getCosts is called, the resule should passed to all reducers
     return bindActionCreators( { getCosts: getCosts }, dispatch );
 }
 

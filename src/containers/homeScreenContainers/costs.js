@@ -5,20 +5,23 @@ import { connect } from 'react-redux';
 class Costs extends Component {
     constructor( props ) {
         super( props );
+
+
+        console.log(`screenWidth: ${this.props.screenWidth} screenHeight: ${this.props.screenHeight}`);
     }
     
     render() {
         return(
             this.props.costs.map( element => {
                 return(
-                    <View key={element} style={styles.container}>
-                        <View style={styles.box1}>
+                    <View key={element.id} style={styles.container}>
+                        <View style={[styles.colorBox, {backgroundColor: element.color}]}>
                         </View>
-                        <View style={styles.box2}>
-                            <Text>{element}</Text>
+                        <View style={styles.costAmountBox}>
+                            <Text>{element.costAmount}</Text>
                         </View>
                     </View>
-                    );
+                );
             })
         );
     }
@@ -26,16 +29,18 @@ class Costs extends Component {
 
 let styles = StyleSheet.create({
     container: { 
-        flex: 2,
-        flexDirection: 'row'
+        flex: 4,
+        flexDirection: 'row',
+        // [2018/12/16][Tsung]: TODO: change the height calculation to be something better without magic number
+        height: Dimensions.get('window').height / 20 
     },
-    box1: {
+    colorBox: {
         flex: 1,
-        backgroundColor: 'red'
+        margin: '5%'
     },
-    box2: {
-        flex: 1,
-        backgroundColor: 'blue'
+    costAmountBox: {
+        flex: 3,
+        margin: '5%'
     }
 });
 
