@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Dimensions, AppRegistry, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 class NewComponentScreen extends Component
 {
@@ -7,19 +8,46 @@ class NewComponentScreen extends Component
         return (
             <View style={styles.container}>
                 <View style={styles.titleContainer}>
-                    <Text>title</Text>
+                    <Text>New Component Page</Text>
                 </View>
                 <View style={styles.enterBalanceContainer}>
-                    <Text>enter balance</Text>
+                    <View style={styles.textInputContainer}>
+                        <TextInput style={styles.textInputBox}>Enter Balance</TextInput>
+                    </View>
+                    <View style={styles.signBox}>
+                        <Icon
+                            reverse
+                            name='add'
+                        />
+                    </View>
                 </View>
                 <View style={styles.enterCostContainer}>
-                    <Text>cost name</Text>
+                    <View style={styles.textInputContainer}>
+                        <TextInput style={styles.textInputBox}>Enter Cost Name</TextInput>
+                    </View>
+                    <View style={styles.signBox}>
+                        <Icon
+                            reverse
+                            name='add'
+                        />
+                    </View>
                 </View>
                 <View style={styles.costsContainer}>
-                    <Text>costs</Text>
+                    <ScrollView>
+
+                    </ScrollView>
                 </View>
                 <View style={styles.saveAndCancelContainer}>
-                    <Text>save and cancel</Text>
+                    <View style={styles.saveAndCancelBox}>
+                        <TouchableOpacity style={styles.saveBox}>
+                            <Text style={styles.textStyle}>Save</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.saveAndCancelBox}>
+                        <TouchableOpacity style={styles.cancelBox}>
+                            <Text style={styles.textStyle}>Cancel</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         );
@@ -35,16 +63,55 @@ let styles = StyleSheet.create({
         flex: 1
     },
     enterBalanceContainer: {
-        flex: 1
+        flex: 1,
+        flexDirection: 'row'
     },
     enterCostContainer: {
-        flex: 1
+        flex: 1,
+        flexDirection: 'row'
     },
     costsContainer: {
-        flex: 3
+        flex: 3,
+        borderRadius: 20,
+        borderWidth: 5,
+        margin: '1%'
     },
     saveAndCancelContainer: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    saveAndCancelBox: {
         flex: 1
+    },
+    saveBox: {
+        borderRadius: 20,
+        borderWidth: 5,
+        margin: '4%'
+    },
+    cancelBox: {
+        borderRadius: 20,
+        borderWidth: 5,
+        margin: '4%'
+    },
+    textInputContainer: {
+        flex: 2,
+        borderRadius: 20,
+        borderWidth: 5,
+        margin: '4%'
+    },
+    textInputBox: {
+        textAlign: 'center',
+        marginTop: '10%',
+        fontSize: 25
+    },
+    signBox: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: '5%'
+    },
+    textStyle: {
+        fontSize: 20,
+        textAlign: 'center'
     }
 })
 
