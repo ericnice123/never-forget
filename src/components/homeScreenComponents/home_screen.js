@@ -12,6 +12,8 @@ class HomeScreen extends Component {
 
         this.onPressViewMonthlySummary  = this.onPressViewMonthlySummary.bind(this);
         this.onPressNewComponent        = this.onPressNewComponent.bind(this);
+        this.onPressAddCost             = this.onPressAddCost.bind(this);
+        this.onPressRemoveCost          = this.onPressRemoveCost.bind(this);
     }
 
     onPress() {
@@ -27,11 +29,11 @@ class HomeScreen extends Component {
     }
 
     onPressAddCost() {
-        console.log("Add a cost pressed!");
+        this.props.navigation.navigate('AddOrRemoveCostScreen');
     }
 
     onPressRemoveCost() {
-        console.log("Remove cost pressed!");
+        this.props.navigation.navigate('AddOrRemoveCostScreen');
     }
 
     render() {
@@ -101,7 +103,7 @@ let styles = StyleSheet.create({
     },
     viewPieChart: {
         flex: 1,
-        backgroundColor: 'green',
+        backgroundColor: 'white',
         justifyContent: 'center',
         alignItems:'center'
     },

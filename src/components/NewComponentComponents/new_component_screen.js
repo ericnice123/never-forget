@@ -8,7 +8,7 @@ class NewComponentScreen extends Component
         return (
             <View style={styles.container}>
                 <View style={styles.titleContainer}>
-                    <Text>New Component Page</Text>
+                    <Text style={styles.titleBox}>New Component Page</Text>
                 </View>
                 <View style={styles.enterBalanceContainer}>
                     <View style={styles.textInputContainer}>
@@ -60,7 +60,12 @@ let styles = StyleSheet.create({
         flexDirection: 'column'
     },
     titleContainer: {
-        flex: 1
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    titleBox: {
+        fontSize: 20
     },
     enterBalanceContainer: {
         flex: 1,
@@ -97,11 +102,11 @@ let styles = StyleSheet.create({
         flex: 2,
         borderRadius: 20,
         borderWidth: 5,
-        margin: '4%'
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '1%'
     },
     textInputBox: {
-        textAlign: 'center',
-        marginTop: '10%',
         fontSize: 25
     },
     signBox: {
