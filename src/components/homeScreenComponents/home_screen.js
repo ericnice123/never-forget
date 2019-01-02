@@ -16,10 +16,6 @@ class HomeScreen extends Component {
         this.onPressRemoveCost          = this.onPressRemoveCost.bind(this);
     }
 
-    onPress() {
-        console.log("Pressed!");
-    }
-
     onPressViewMonthlySummary() {
         this.props.navigation.navigate('MonthlySummaryScreen');
     }

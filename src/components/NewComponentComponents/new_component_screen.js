@@ -83,19 +83,26 @@ let styles = StyleSheet.create({
     },
     saveAndCancelContainer: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        margin: '1%'
     },
     saveAndCancelBox: {
         flex: 1
     },
     saveBox: {
+        flex: 1,
         borderRadius: 20,
         borderWidth: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
         margin: '4%'
     },
     cancelBox: {
+        flex: 1,
         borderRadius: 20,
         borderWidth: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
         margin: '4%'
     },
     textInputContainer: {
