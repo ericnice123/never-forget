@@ -11,19 +11,13 @@ class PieChartSummary extends Component {
         super(props);
     }
 
-    // TODO: Test the api call with redux
     componentDidMount() {
-        return fetch('https://facebook.github.io/react-native/movies.json')
+        return fetch('http://localhost:3000/testJson')
         .then((response) => response.json())
         .then((responseJson) => {
-
-            this.setState({
-            isLoading: false,
-            dataSource: responseJson.movies,
-            }, function(){
-
-            });
-            console.log("Hey Mother funcker!");
+            responseJson.costElements.map(element => {
+                console.log(element);
+            })
         })
         .catch((error) =>{
             console.error(error);
