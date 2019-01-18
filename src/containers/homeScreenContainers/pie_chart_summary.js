@@ -6,12 +6,15 @@ import PieChart from 'react-native-pie-chart';
 // redux
 import { connect } from 'react-redux';
 
+// action functions
+import { getCosts } from '../../actions/index';
+
 class PieChartSummary extends Component {
     constructor(props) {
         super(props);
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         return fetch('http://localhost:3000/testJson')
         .then((response) => response.json())
         .then((responseJson) => {
@@ -22,6 +25,11 @@ class PieChartSummary extends Component {
         .catch((error) =>{
             console.error(error);
         });
+    }*/
+
+    componentDidMount() {
+        console.log("calling getCosts");
+        this.props.getCosts();
     }
 
     render() {
@@ -30,26 +38,32 @@ class PieChartSummary extends Component {
 
         series = [];
         colories = [];
-
-        this.props.costs.map(element => {
-            series.push(element.costAmount);
-            colories.push(element.color);
-        });
         
-        return(
-            <View style={styles.pieChartContainer}>
-                <View style={styles.titleBox}>
-                    <Text style={styles.titleStyle}>Current Cost View</Text>
+        if(this.props.costs !== null) {
+            this.props.costs.map(element => {
+                series.push(element.costAmount);
+                colories.push(element.color);
+            });
+            return(
+                <View style={styles.pieChartContainer}>
+                    <View style={styles.titleBox}>
+                        <Text style={styles.titleStyle}>Current Cost View</Text>
+                    </View>
+                    <View style={styles.pieChartBox}>
+                        <PieChart
+                            chart_wh={chart_wh}
+                            series={series}
+                            sliceColor={colories}
+                        />
+                    </View>
                 </View>
-                <View style={styles.pieChartBox}>
-                    <PieChart
-                        chart_wh={chart_wh}
-                        series={series}
-                        sliceColor={colories}
-                    />
-                </View>
-            </View>
-        )
+            )    
+        }
+        else {
+            return (
+                <View></View>
+            )
+        }
     }
 }
 
@@ -76,4 +90,4 @@ function mapStateToProps( state ) {
     return { costs: state.costs }
 }
 
-export default connect(mapStateToProps, null)(PieChartSummary);
+export default connect( mapStateToProps, { getCosts } )( PieChartSummary );

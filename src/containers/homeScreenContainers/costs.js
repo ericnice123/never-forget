@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, Dimensions, AppRegistry, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
+// action functions
+import { getCosts } from '../../actions/index';
+
+
 class Costs extends Component {
     constructor( props ) {
         super( props );
@@ -10,20 +14,31 @@ class Costs extends Component {
         console.log(`screenWidth: ${this.props.screenWidth} screenHeight: ${this.props.screenHeight}`);
     }
     
+    componentDidMount() {
+        this.props.getCosts();
+    }
+
     render() {
-        return(
-            this.props.costs.map( element => {
-                return(
-                    <View key={element.id} style={styles.container}>
-                        <View style={[styles.colorBox, {backgroundColor: element.color}]}>
+        if(this.props.costs !== null) {
+            return(
+                this.props.costs.map( element => {
+                    return(
+                        <View key={element.id} style={styles.container}>
+                            <View style={[styles.colorBox, {backgroundColor: element.color}]}>
+                            </View>
+                            <View style={styles.costAmountBox}>
+                                <Text>{element.costAmount}</Text>
+                            </View>
                         </View>
-                        <View style={styles.costAmountBox}>
-                            <Text>{element.costAmount}</Text>
-                        </View>
-                    </View>
-                );
-            })
-        );
+                    );
+                })
+            );
+        }
+        else {
+            return (
+                <View></View>
+            );
+        }
     }
 }
 
@@ -48,5 +63,4 @@ function mapStateToProps( state ) {
     return { costs: state.costs }
 }
 
-
-export default connect(mapStateToProps, null)(Costs);
+export default connect( mapStateToProps, {getCosts} )( Costs );
